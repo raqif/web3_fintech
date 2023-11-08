@@ -1,0 +1,15 @@
++--------------+     +---------------------+     +---------------------+
+|   User       |     | CryptocurrencyHandler|     | TransactionHandler  |
++--------------+     +---------------------+     +---------------------+
+| userId       |     | handlePayment()     |     | processTransaction()|
+| username     |     | generateInvoice()   |     +---------------------+
+| email        |     | verifyTransaction() |
++--------------+     +---------------------+
+                    |
+             +----------------------+
+             |       Invoice        |
+             +----------------------+
+             | invoiceId            |
+             | totalAmount          |
+             | lineItems            |
+             +----------------------+

@@ -1,0 +1,46 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice System</title>
+</head>
+<body>
+    <h1>Invoice System</h1>
+    
+    <form method="post" action="/">
+        {{ form.csrf_token }}
+        {{ form.hidden_tag() }}
+
+        <label for="{{ form.username.id }}">Username:</label>
+        {{ form.username }}
+        <br>
+
+        <label for="{{ form.email.id }}">Email:</label>
+        {{ form.email }}
+        {% if form.email.errors %}
+            <span style="color: red;">{{ form.email.errors[0] }}</span>
+        {% endif %}
+        <br>
+
+        <label for="{{ form.currency.id }}">Select Currency:</label>
+        {{ form.currency }}
+        <br>
+
+        <label for="{{ form.amount.id }}">Invoice Amount:</label>
+        {{ form.amount }}
+        <br>
+
+        <button type="submit">Simulate Payment</button>
+    </form>
+
+
+    <h2>List of Invoices</h2>
+    <ul>
+        {% for invoice in invoices %}
+            <li>ID: {{ invoice.invoice_id }}, Username: {{ invoice.username }}, Email: {{ invoice.email }}, Total Amount: {{ invoice.total_amount }}, Currency: {{ invoice.currency_type }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
